@@ -5,6 +5,8 @@
 #include <stdexcept>
 
 #include <cassert>
+#include <climits>
+#include <algorithm>
 
 #include "enumerations.h"
 #include "plot_attributes.h"

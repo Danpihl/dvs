@@ -4,6 +4,7 @@
 #include <cmath>
 #include <type_traits>
 #include <utility>
+#include <cstring>
 
 #include "logging.h"
 #include "math/lin_alg/vector_dynamic/class_defs/vector_dynamic_class_def.h"

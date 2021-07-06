@@ -7,7 +7,7 @@
 
 #include <csignal>
 #include <iostream>
-#include <filesystem>
+#include "filesystem_include.h"
 #include <stdexcept>
 
 #include "layout_tools_window.h"
@@ -25,7 +25,7 @@ std::string getExecutablePath()
     {
         printf("Buffer too small; need size %u\n", size);
     }
-    
+
     return std::string(path);
 }
 
@@ -38,7 +38,7 @@ MainWindow::MainWindow(const std::vector<std::string>& cmdl_args)
     current_gui_element_set_ = false;
     is_editing_ = false;
     window_callback_id_ = dvs_ids::WINDOW_TOGGLE;
-    std::filesystem::path pa = std::filesystem::absolute(getExecutablePath());
+    dvs_filesystem::path pa = dvs_filesystem::absolute(getExecutablePath());
     cache_reader_ = new CacheReader(pa.remove_filename());
     main_window_last_in_focus_ = true;
 
@@ -49,7 +49,7 @@ MainWindow::MainWindow(const std::vector<std::string>& cmdl_args)
 
     background_panel_ = new BackgroundPanel(this, this->GetSize(), outer_color, middle_color);
 
-    if(cache_reader_->hasKey("last_opened_file") && std::filesystem::exists(cache_reader_->readCache<std::string>("last_opened_file")))
+    if(cache_reader_->hasKey("last_opened_file") && dvs_filesystem::exists(cache_reader_->readCache<std::string>("last_opened_file")))
     {
         save_manager_ = new SaveManager(cache_reader_->readCache<std::string>("last_opened_file"));
     }

@@ -1,19 +1,24 @@
 #ifndef OPENGL_HEADER_
 #define OPENGL_HEADER_
 
-#ifdef PLATFORM_LINUX_M
+// #ifdef PLATFORM_LINUX_M
 // clang-format off
 #include <GL/glut.h>
 #include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glx.h>
+#define GL_GLEXT_PROTOTYPES
+#include <GL/glext.h>
+// #include <glut.h>
 // clang-format on
-#endif
+// #endif
 
-// #ifdef PLATFORM_APPLE_M
+/*#ifdef PLATFORM_APPLE_M
 
 #include <GLUT/glut.h>
 #include <OpenGL/gl.h>
 #include <OpenGl/glu.h>
 
-// #endif
+#endif*/
 
 #endif

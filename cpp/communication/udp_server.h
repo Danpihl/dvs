@@ -50,7 +50,8 @@ public:
 
     bool hasReceivedData()
     {
-        const std::lock_guard lg(mtx_);
+        // const std::lock_guard lg(mtx_);
+        const std::lock_guard<std::mutex> lg(mtx_);
         return received_data_buffer_.size() > 0;
     }
 
@@ -85,7 +86,7 @@ public:
 
     std::unique_ptr<const ReceivedData> getReceivedData()
     {
-        const std::lock_guard lg(mtx_);
+        const std::lock_guard<std::mutex> lg(mtx_);
         if(received_data_buffer_.size() > 0)
         {
             std::unique_ptr<const ReceivedData> res(std::move(received_data_buffer_.front()));
@@ -174,7 +175,7 @@ public:
 
             // received_data_ = std::make_unique<const ReceivedData>(uint8_ptr, num_received_bytes_total);
             {
-                const std::lock_guard lg(mtx_);
+                const std::lock_guard<std::mutex> lg(mtx_);
                 received_data_buffer_.push(std::make_unique<const ReceivedData>(uint8_ptr, num_received_bytes_total));
             }
         }

@@ -2,7 +2,8 @@
 #define DVS_CACHE_READER_H_
 
 #include <string>
-#include <filesystem>
+#include "filesystem_include.h"
+#include <iomanip>
 
 #include <nlohmann/json.hpp>
 
@@ -19,13 +20,13 @@ public:
     {
         createCacheFile();
     }
-    CacheReader(const std::filesystem::path& cache_file_path)
+    CacheReader(const dvs_filesystem::path& cache_file_path)
     {
         cache_file_path_ = cache_file_path;
-        cache_file_path_ += std::filesystem::path("cache.json");
+        cache_file_path_ += dvs_filesystem::path("cache.json");
         j_["empty"] = "empty";
 
-        if(!std::filesystem::exists(cache_file_path_))
+        if(!dvs_filesystem::exists(cache_file_path_))
         {
             createCacheFile();
         }
