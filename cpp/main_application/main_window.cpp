@@ -57,6 +57,10 @@ MainWindow::MainWindow(const std::vector<std::string>& cmdl_args)
     cache_reader_ = new CacheReader(pa.remove_filename());
     main_window_last_in_focus_ = true;
 
+    int argc = 1;
+    char* argv[1] = {"hej"};
+    glutInit(&argc, argv);
+
     const int outer = 245;
     const int middle = 200;
     const wxColor outer_color(outer, outer, outer);

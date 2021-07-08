@@ -70,10 +70,11 @@ CursorSquareState mouseState(const Bound2Df bound, const Bound2Df bound_margin, 
 PlotWindowGLPane::PlotWindowGLPane(wxWindow* parent, const ElementSettings& element_settings, const float grid_size)
     : wxGLCanvas(parent, wxID_ANY, getArgsPtr(), wxDefaultPosition, wxDefaultSize, wxFULL_REPAINT_ON_RESIZE), GuiElement(element_settings)
 {
-    wxGLContextAttrs cxtAttrs;
-    cxtAttrs.PlatformDefaults().OGLVersion(99, 2).EndList();
+    // wxGLContextAttrs cxtAttrs;
+    // cxtAttrs.PlatformDefaults().OGLVersion(99, 2).EndList(); // Doesn't work on linux!!
     // https://stackoverflow.com/questions/41145024/wxwidgets-and-modern-opengl-3-3
-    m_context = new wxGLContext(this, NULL, &cxtAttrs);
+    // m_context = new wxGLContext(this, NULL, &cxtAttrs);
+    m_context = new wxGLContext(this);
 
     is_editing_ = false;
     parent_size_ = parent->GetSize();
