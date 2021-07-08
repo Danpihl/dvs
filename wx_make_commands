@@ -5,10 +5,16 @@
 ./configure --with-opengl --with-osx_cocoa --disable-shared --disable-dynamicloader --enable-svg=off --enable-unicode --with-opengl --with-osx_cocoa --with-zlib --disable-precomp-headers --with-macosx-version-min=10.15
 
 Linux:
-./configure --with-gtk=3 --with-opengl --disable-shared --disable-dynamicloader --enable-svg=off --enable-unicode --with-opengl --with-zlib --disable-precomp-headers
+./configure --with-opengl --with-gtk=2 --disable-shared --enable-svg=off --with-zlib --disable-precomp-headers --enable-monolithic --enable-glcanvasegl
+--disable-dynamicloader 
 
 After building wx, there will be a custom "setup.h" somewhere in the "lib" directory, which should be moved to "include/wx"
 
 ./configure --enable-clipboard --enable-controls --disable-shared --enable-dataviewctrl --enable-display --enable-dnd --enable-graphics_ctx --enable-std_string --enable-svg --enable-unicode --enable-webkit --enable-webview --with-expat --with-libjpeg --with-libpng --with-libtiff --with-opengl --with-zlib --disable-precomp-headers
 # This is the default option, but be explicit
-"--disable-monolithic",
+"--enable-monolithic",
+
+List needed libs:
+wx-config --libs
+List needed flags:
+wx-config --cxxflags

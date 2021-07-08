@@ -3,11 +3,12 @@
 
 // #ifdef PLATFORM_LINUX_M
 // clang-format off
+#define GL_GLEXT_PROTOTYPES
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glx.h>
-#define GL_GLEXT_PROTOTYPES
+
 #include <GL/glext.h>
 // #include <glut.h>
 // clang-format on

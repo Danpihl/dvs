@@ -13,3 +13,13 @@ set(wxWidgets_LIBRARIES -lwx_osx_cocoau_core-3.1
                         -lwx_baseu-3.1
                         -lwx_osx_cocoau_gl-3.1
                         -lwx_osx_cocoau_adv-3.1)
+# iconv
+# "-framework System"
+# "-framework IOKit"
+# "-framework Carbon"
+# "-framework Cocoa"
+# "-framework QuartzCore")<
+
+
+
+

@@ -1,7 +1,7 @@
 #include "main_window.h"
 
 #include <unistd.h>
-#include <mach-o/dyld.h>
+// #include <mach-o/dyld.h>
 #include <wx/wxprec.h>
 #include <wx/wfstream.h>
 
@@ -9,6 +9,9 @@
 #include <iostream>
 #include "filesystem_include.h"
 #include <stdexcept>
+#include <libgen.h>
+#include <unistd.h>
+#include <linux/limits.h>
 
 #include "layout_tools_window.h"
 #include "events.h"
@@ -16,7 +19,7 @@
 
 using namespace dvs::internal;
 
-std::string getExecutablePath()
+/*std::string getExecutablePath()
 {
     char path[2048];
     uint32_t size = sizeof(path);
@@ -26,6 +29,18 @@ std::string getExecutablePath()
         printf("Buffer too small; need size %u\n", size);
     }
 
+    return std::string(path);
+}*/
+
+std::string getExecutablePath()
+{
+    char result[PATH_MAX];
+    ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
+    const char *path;
+    if (count != -1)
+    {
+        path = dirname(result);
+    }
     return std::string(path);
 }
 

@@ -47,11 +47,11 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/externals/googletest/googletest/
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/externals/nlohmann/include)
 
 # ****** wxWidgets ******
-# find_package(wxWidgets COMPONENTS core base gl adv)
+find_package(wxWidgets COMPONENTS core base gl adv)
+include(${wxWidgets_USE_FILE})
 
-
-include_directories(${WX_CUSTOM_INC_PATH})
-link_directories(${WX_CUSTOM_LIB_PATH})
+# include_directories(${WX_CUSTOM_INC_PATH})
+# link_directories(${WX_CUSTOM_LIB_PATH})
 
 
 set(GTEST_LIB_FILES libgtest.a

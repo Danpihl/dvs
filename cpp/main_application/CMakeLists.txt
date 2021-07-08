@@ -41,17 +41,66 @@ set(CPP_SOURCE_FILES main.cpp
                      main_window_receive.cpp
                      main_window_gui.cpp)
 
+set(EXTRA_LIBRARIES -lexpat
+                    -lgthread-2.0
+                    -pthread
+                    -lX11
+                    -lXxf86vm
+                    -lSM
+                    -lgtk-x11-2.0
+                    -lgdk-x11-2.0
+                    -lpangocairo-1.0
+                    -latk-1.0
+                    -lcairo
+                    -lgdk_pixbuf-2.0
+                    -lgio-2.0
+                    -lXtst
+                    -lpangoft2-1.0
+                    -lpango-1.0
+                    -lgobject-2.0
+                    -lglib-2.0
+                    -lfontconfig
+                    -lfreetype
+                    -lpng
+                    -ljpeg
+                    -ltiff
+                    -ljbig
+                    -lz
+                    -ldl
+                    -lcurl
+                    -llzma
+                    -lm)
 
 add_executable(dvs ${CPP_SOURCE_FILES})
 target_link_libraries(dvs ${wxWidgets_LIBRARIES}
                           ${OPENGL_LIBRARIES}
                           ${GLUT_LIBRARY}
                           pthread
-                          iconv
                           png
-                          "-framework System"
-                          "-framework IOKit"
-                          "-framework Carbon"
-                          "-framework Cocoa"
-                          "-framework QuartzCore")
-# Note: X11 used to be linked here, wasn't used on MacOS, was it for linux?
+                          X11
+                          Xxf86vm
+                          Xext
+                          ${CMAKE_DL_LIBS}
+                          gtk-x11-2.0
+                          gdk-x11-2.0
+                          stdc++fs
+                          pango-1.0
+                          pangocairo-1.0
+                          cairo
+                          gdk_pixbuf-2.0
+                          glib-2.0
+                          gio-2.0
+                          gobject-2.0
+                          SM
+                          ${wxWidgets_LIBRARIES}
+                          )
+                          # iconv
+                          # "-framework System"
+                          # "-framework IOKit"
+                          # "-framework Carbon"
+                          # "-framework Cocoa"
+                          # "-framework QuartzCore")<
+
+                          
+
+
