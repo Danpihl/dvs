@@ -46,16 +46,16 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/externals/nlohmann/include)
 # ****** wxWidgets ******
 # find_package(wxWidgets COMPONENTS core base gl adv)
 
-set(WX_CUSTOM_INC_PATH /Users/annotelldaniel/work/repos/dvs/cpp/externals/wxwidgets/include)
-set(WX_CUSTOM_LIB_PATH /Users/annotelldaniel/work/repos/dvs/cpp/externals/wxwidgets/lib)
+set(WX_CUSTOM_INC_PATH ${REPO_DIR}/cpp/externals/wxwidgets/include)
+set(WX_CUSTOM_LIB_PATH ${REPO_DIR}/cpp/externals/wxwidgets/lib)
 
 include_directories(${WX_CUSTOM_INC_PATH})
 link_directories(${WX_CUSTOM_LIB_PATH})
 
-set(wxWidgets_LIBRARIES -lwx_osx_cocoau_core-3.1
-                        -lwx_baseu-3.1
-                        -lwx_osx_cocoau_gl-3.1
-                        -lwx_osx_cocoau_adv-3.1)
+# set(wxWidgets_LIBRARIES -lwx_osx_cocoau_core-3.1
+#                         -lwx_baseu-3.1
+#                         -lwx_osx_cocoau_gl-3.1
+#                         -lwx_osx_cocoau_adv-3.1)
 
 set(GTEST_LIB_FILES libgtest.a
                     libgtest_main.a

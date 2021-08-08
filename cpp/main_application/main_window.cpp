@@ -18,7 +18,6 @@
 #include <wx/wxprec.h>
 
 #include <csignal>
-#include <filesystem>
 #include <iostream>
 #include <stdexcept>
 
@@ -78,7 +77,7 @@ MainWindow::MainWindow(const std::vector<std::string>& cmdl_args)
 #ifdef PLATFORM_LINUX_M
     int argc = 1;
     char* argv[1] = {"noop"};
-    glutInit(&argc, argv);
+    // glutInit(&argc, argv);
 #endif
 
     const int outer = 245;
