@@ -50,10 +50,10 @@ void testScatter()
 
     setCurrentElement("view_00");
     clearView();
-    axis({-1.1, -2.2, -3.3}, {4.4, 5.5, 6.6});
+    // axis({-1.1, -2.2, -3.3}, {4.4, 5.5, 6.6});
 
-    plot(xf, yf, properties::Color(212, 14, 55));
-    scatter(x, y, properties::Color(12, 14, 55), properties::PointSize(3));
+    // plot(xf, yf, properties::Color(212, 14, 55));
+    scatter(x, y, properties::Color(0, 255, 255), properties::PointSize(3));
 }
 
 void testScatter3()

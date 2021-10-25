@@ -66,6 +66,8 @@ CursorSquareState mouseState(const Bound2Df bound, const Bound2Df bound_margin, 
     }
 }
 
+#include "shader.h"
+
 PlotWindowGLPane::PlotWindowGLPane(wxWindow* parent, const ElementSettings& element_settings, const float grid_size)
     : wxGLCanvas(parent, wxID_ANY, getArgsPtr(), wxDefaultPosition, wxDefaultSize, wxFULL_REPAINT_ON_RESIZE),
       GuiElement(element_settings)
@@ -80,6 +82,9 @@ PlotWindowGLPane::PlotWindowGLPane(wxWindow* parent, const ElementSettings& elem
 #ifdef PLATFORM_LINUX_M
     m_context = new wxGLContext(this);
 #endif
+
+    wxGLCanvas::SetCurrent(*m_context);
+    Shader shader_ = Shader::createFromCode(shaders::kBasicVertexCode, shaders::kBasicFragmentCode);
 
     is_editing_ = false;
     parent_size_ = parent->GetSize();

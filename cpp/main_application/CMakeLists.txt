@@ -30,6 +30,7 @@ set(CPP_SOURCE_FILES main.cpp
                      misc/color_map.cpp
 
                      globals.cpp
+                     shader.cpp
 
                      tab_view.cpp
                      window_view.cpp

@@ -17,6 +17,7 @@ private:
     GLuint buffer_idx_;
 
     void findMinMax() override;
+    Shader shader_;
 
 public:
     Scatter2D();
@@ -33,6 +34,9 @@ Scatter2D::Scatter2D(std::unique_ptr<const ReceivedData> received_data, const Fu
     {
         throw std::runtime_error("Invalid function type for Scatter2D!");
     }
+
+    shader_ = Shader::createFromCode(shaders::kBasicVertexCode, shaders::kBasicFragmentCode);
+    std::cout << shader_.programId() << std::endl;
 
     points_ptr_ =
         convertData2DOuter(data_ptr_, data_type_, num_elements_, num_bytes_per_element_, num_bytes_for_one_vec_);
@@ -59,6 +63,7 @@ void Scatter2D::visualize()
     {
         visualize_has_run_ = true;
         glGenBuffers(1, &buffer_idx_);
+        glUseProgram(shader_.programId());
         glBindBuffer(GL_ARRAY_BUFFER, buffer_idx_);
         glBufferData(GL_ARRAY_BUFFER, sizeof(float) * num_elements_ * 2, points_ptr_, GL_STATIC_DRAW);
     }
@@ -71,6 +76,7 @@ void Scatter2D::visualize()
 
     glDrawArrays(GL_POINTS, 0, num_elements_);
     glDisableVertexAttribArray(0);
+    glUseProgram(0);
 }
 
 Scatter2D::~Scatter2D()

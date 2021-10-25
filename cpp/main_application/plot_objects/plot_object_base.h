@@ -15,6 +15,7 @@
 #include "plot_functions/plot_functions.h"
 #include "plot_objects/utils.h"
 #include "properties.h"
+#include "shader.h"
 
 using namespace dvs;
 using namespace dvs::internal;
@@ -50,7 +51,7 @@ protected:
     bool is_persistent_;
     bool min_max_calculated_;
     bool visualize_has_run_;
-    GLuint line_type_; // TODO: Shall be moved to plot2d.h
+    GLuint line_type_;  // TODO: Shall be moved to plot2d.h
 
     void assignProperties(const Properties& props);
     virtual void findMinMax() = 0;
